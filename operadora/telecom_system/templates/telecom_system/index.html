@@ -2,9 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Index</title>
 </head>
 <body>
-
+<h2>
+    Clientes
+</h2>
+<h3>
+    <a href="{% url 'telecom_system:new_client' %}">Criar cliente</a>
+</h3>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                CPF
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th>
+                Gênero
+            </th>
+            <th>
+                Planos
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+        </thead>
+        {% for client in clients %}
+        <tr>
+            <td>
+                {{ client.name }}
+            </td>
+            <td>
+                {{ client.cpf }}
+            </td>
+            <td>
+                {{ client.birth_date }}
+            </td>
+            <td>
+                {{ client.gender }}
+            </td>
+            <td>
+                {% for plan in client.plans_set.all %}
+                {{ plan.plans }}
+                {%endfor%}
+            </td>
+            <td>
+                <a href="{% url 'telecom_system:client' client.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'telecom_system:delete_client' client.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 </body>
 </html>

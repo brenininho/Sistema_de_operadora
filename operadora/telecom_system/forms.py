@@ -12,7 +12,7 @@ class ChoosePlanForm(ModelForm):
     class Meta:
         model = ChoosePlan
         fields = '__all__'
-        exclude = 'client'
+        exclude = ('client',)
 
 
 class CellphonePlanForm(ModelForm):

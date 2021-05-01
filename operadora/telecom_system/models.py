@@ -39,8 +39,6 @@ class CellphonePlan(models.Model):
     name = models.CharField(max_length=50, null=False)
     price = models.FloatField(max_length=10)
     premium_data = models.CharField(max_length=50)
-    talk = models.CharField(max_length=50)
-    text = models.CharField(max_length=50)
     lines = models.CharField(max_length=50, choices=[
         ("1 linha", "1 linha"),
         ("2 linhas", "2 linhas"),

@@ -2,74 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Client</title>
+    <title>Criar</title>
 </head>
 <body>
-<h2>Client</h2>
-{% for client in clients %}
-{{ client.name }}
-{% endfor %}
-<!---->
+<h2>Criar Cliente</h2>
 
 
-<h2>
-    Clientes
-</h2>
-<h3>
-    <a href="{% url 'client:new_client' %}">Criar cliente</a>
-</h3>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>
-                Nome
-            </th>
-            <th>
-                CPF
-            </th>
-            <th>
-                Data de Nascimento
-            </th>
-            <th>
-                Gênero
-            </th>
-            <th>
-                Editar
-            </th>
-            <th>
-                Delete
-            </th>
-        </tr>
-        </thead>
-        {% for client in clients %}
-        <tr>
-            <td>
-                {{ client.name }}
-            </td>
-            <td>
-                {{ client.cpf }}
-            </td>
-            <td>
-                {{ client.birth_date }}
-            </td>
-            <td>
-                {{ client.gender }}
-            </td>
-            <td>
-                {% for plan in client.plan_set.all %}
-                {{ ChoosePlan.plan }}
-                {%endfor%}
-            </td>
-            <td>
-                <a href="{% url 'telecom_system:create_client' client.id %}">Editar</a>
-            </td>
-            <td>
-                <a href="{% url 'cliente:deletar_cliente' cliente.id %}">Excluir</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<form action="
+{% if telecom_system %}
+{% url 'telecom_system:client' client.id %}
+{% else %}
+{% url 'telecom_system:new_client'  %}
+{% endif %}"
+      method="post">
+    <h2>Cliente {{ client.name }}</h2>
+    {% csrf_token %}
+    {{ form_client }}
+  <input type="hidden" name="form" value="client">
+    <input type="submit" value="Enviar">
+</form>
+
+{% if telecom_system %}
+<form action="{% url 'telecom_system:client' client.id  %}" method="post">
+    <h2>Plano</h2>
+    {% csrf_token %}
+    {{ form_plan }}
+    <input type="hidden" name="form" value="chooseplan">
+    <input type="submit" value="Enviar">
+</form>
+<ul>
+    {% for plan in client.plans_set.all %}
+    <li>{{ plan.plan }} - <a href="{% url 'telecom_system:delete_plan' plans.id  %} ">deletar</a></li>
+    {%endfor%}
+</ul>
+{% endif %}
+
 </body>
 </html>
