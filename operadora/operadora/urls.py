@@ -20,5 +20,5 @@ from telecom_system import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
-    path('client/', include("telecom_system.urls")),
+    path('', include("telecom_system.urls")),
 ]

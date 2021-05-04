@@ -5,37 +5,37 @@
     <title>Criar</title>
 </head>
 <body>
-<h2>Criar Cliente</h2>
+<h2>
+    {% if client %}
+    Editar
+    {% else %}
+    Criar
+    {% endif %}
+    Cliente</h2>
 
 
 <form action="
-{% if telecom_system %}
+{% if client %}
 {% url 'telecom_system:client' client.id %}
 {% else %}
 {% url 'telecom_system:new_client'  %}
-{% endif %}"
-      method="post">
-    <h2>Cliente {{ client.name }}</h2>
+{% endif %}" method="post">
+    <h2>Cliente</h2>
     {% csrf_token %}
     {{ form_client }}
-  <input type="hidden" name="form" value="client">
     <input type="submit" value="Enviar">
 </form>
-
-{% if telecom_system %}
-<form action="{% url 'telecom_system:client' client.id  %}" method="post">
-    <h2>Plano</h2>
-    {% csrf_token %}
-    {{ form_plan }}
-    <input type="hidden" name="form" value="chooseplan">
-    <input type="submit" value="Enviar">
-</form>
+{% if client %}
+    {% for plan in client.chooseplan_set.all %}
 <ul>
-    {% for plan in client.plans_set.all %}
-    <li>{{ plan.plan }} - <a href="{% url 'telecom_system:delete_plan' plans.id  %} ">deletar</a></li>
-    {%endfor%}
+    <li>
+        {{ plan.plans }}
+        <a href="{% url 'telecom_system:delete_plan' plan.id %}">x</a>
+    </li>
 </ul>
-{% endif %}
+    {%endfor%}
+{% else %}
 
+{% endif %}
 </body>
 </html>

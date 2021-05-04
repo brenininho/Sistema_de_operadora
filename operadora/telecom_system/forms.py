@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Client, ChoosePlan, CellphonePlan
+from .models import Client, ChoosePlan
 
 
 class ClientForm(ModelForm):
@@ -13,9 +13,3 @@ class ChoosePlanForm(ModelForm):
         model = ChoosePlan
         fields = '__all__'
         exclude = ('client',)
-
-
-class CellphonePlanForm(ModelForm):
-    class Meta:
-        model = CellphonePlan
-        fields = '__all__'

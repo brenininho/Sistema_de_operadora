@@ -3,6 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+    </style>
 </head>
 <body>
 <h2>
@@ -12,7 +37,7 @@
     <a href="{% url 'telecom_system:new_client' %}">Criar cliente</a>
 </h3>
 <div>
-    <table>
+    <table id="customers">
         <thead>
         <tr>
             <th>
@@ -29,6 +54,9 @@
             </th>
             <th>
                 Planos
+            </th>
+            <th>
+                Adicionar Planos
             </th>
             <th>
                 Editar
@@ -53,9 +81,12 @@
                 {{ client.gender }}
             </td>
             <td>
-                {% for plan in client.plans_set.all %}
-                {{ plan.plans }}
+                {% for plan in client.chooseplan_set.all %}
+                {{ plan.plans }},
                 {%endfor%}
+            </td>
+            <td>
+                <a href="{% url 'telecom_system:add_plan' client.id %}"> Adicionar Plano </a>
             </td>
             <td>
                 <a href="{% url 'telecom_system:client' client.id %}">Editar</a>

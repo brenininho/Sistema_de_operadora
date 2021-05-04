@@ -1,12 +1,9 @@
 from django.contrib import admin
 from django.db import models
-# from dotenv import load_dotenv
-
-# load_dotenv()
 
 
 class Client(models.Model):
-    def str(self):
+    def __str__(self):
         return f"{self.name}, {self.cpf}, {self.gender}"
 
     name = models.CharField("Nome", max_length=100, null=False)
@@ -29,18 +26,4 @@ class ChoosePlan(models.Model):
         ("Medium", "Medium"),
         ("Plus", "Plus"),
         ("Premium", "Premium"),
-    ])
-
-
-class CellphonePlan(models.Model):
-    def __str__(self):
-        return f'{self.name}, {self.price}, {self.premium_data}, {self.lines}'
-
-    name = models.CharField(max_length=50, null=False)
-    price = models.FloatField(max_length=10)
-    premium_data = models.CharField(max_length=50)
-    lines = models.CharField(max_length=50, choices=[
-        ("1 linha", "1 linha"),
-        ("2 linhas", "2 linhas"),
-        ("3 linhas", "3 linhas"),
     ])

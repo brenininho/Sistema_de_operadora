@@ -1,12 +1,5 @@
 from django.contrib import admin
-from .models import Client, CellphonePlan, ChoosePlan
-
-
-class CellphonePlanAdmin(admin.ModelAdmin):
-    fields = ['name', 'price', 'premium_data', 'lines']
-    list_display = ("name", "price", "premium_data", "lines")
-    list_filter = ["premium_data"]
-    search_fields = ["name"]
+from .models import Client, ChoosePlan
 
 
 class ChoosePlansInline(admin.TabularInline):
@@ -23,4 +16,3 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Client, ClientAdmin)
-admin.site.register(CellphonePlan, CellphonePlanAdmin)
