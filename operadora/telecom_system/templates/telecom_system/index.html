@@ -30,6 +30,10 @@
     </style>
 </head>
 <body>
+<nav>
+    <a href="/">Home</a>
+</nav>
+
 <h2>
     Clientes
 </h2>
@@ -54,6 +58,9 @@
             </th>
             <th>
                 Planos
+            </th>
+            <th>
+                Dados utilizados
             </th>
             <th>
                 Adicionar Planos
@@ -83,6 +90,11 @@
             <td>
                 {% for plan in client.chooseplan_set.all %}
                 {{ plan.plans }},
+                {%endfor%}
+            </td>
+            <td>
+                {% for data in client.datausage_set.all %}
+                {{ data.data_usage }} GB
                 {%endfor%}
             </td>
             <td>

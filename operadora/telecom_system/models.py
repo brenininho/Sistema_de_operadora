@@ -27,3 +27,11 @@ class ChoosePlan(models.Model):
         ("Plus", "Plus"),
         ("Premium", "Premium"),
     ])
+
+
+class DataUsage(models.Model):
+    def __str__(self):
+        return f'{self.data_usage}'
+
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    data_usage = models.CharField(max_length=50)

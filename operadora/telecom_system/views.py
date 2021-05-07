@@ -67,3 +67,5 @@ def delete_plan(request, pk):
     plan = get_object_or_404(ChoosePlan, pk=pk)
     plan.delete()
     return redirect('telecom_system:client', pk=plan.client.id)
+
+

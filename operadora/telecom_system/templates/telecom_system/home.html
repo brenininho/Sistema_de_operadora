@@ -3,9 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+    </style>
 </head>
 <body>
+<nav>
+    <a href="{% url 'telecom_system:index' %}"> Clientes</a>
+</nav>
 <h2>Bem Vindo</h2>
-<a href="{% url 'telecom_system:index' %}"> Clientes</a>
+
+
+<section>
+    <div>
+        <table id="customers">
+            <tr>
+                <th>
+                    Planos
+                </th>
+                <th>
+                    Dados Móveis
+                </th>
+                <th>
+                    Apps Ilimitados
+                </th>
+                <th>
+                    Ligações
+                </th>
+                <th>
+                    SMS
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Starter
+                </td>
+                <td>
+                    2 GIGA
+                </td>
+                <td>
+                    Whatsapp
+                </td>
+                <td>
+                    500 Minutos
+                </td>
+                <td>
+                    100 SMS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Medium
+                </td>
+                <td>
+                    5 GIGA
+                </td>
+                <td>
+                    Whatsapp, Instagram
+                </td>
+                <td>
+                    1000 Minutos
+                </td>
+                <td>
+                    500 SMS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Plus
+                </td>
+                <td>
+                    12 GIGA
+                </td>
+                <td>
+                    Whatsapp, Instagram, Facebook, Messenger
+                </td>
+                <td>
+                    Minutos Ilimitados
+                </td>
+                <td>
+                    SMS Ilimitados
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Premium
+                </td>
+                <td>
+                    50 GIGA
+                </td>
+                <td>
+                    Whatsapp, Instagram,Facebook e Messenger
+                </td>
+                <td>
+                    Minutos Ilimitados
+                </td>
+                <td>
+                    SMS Ilimitados
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+
 </body>
 </html>
